@@ -3,6 +3,7 @@ package zhaoyy.springboot_shiro.controller;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +33,12 @@ public class CommonController {
 
     @PostMapping("/login")
     @ResponseBody
-    public ResponseBo login(String userName,String userPwd){
+    public ResponseBo login(String userName,String userPwd,Boolean rememberMe){
         // 从SecurityUtils里边创建一个 subject
         Subject subject = SecurityUtils.getSubject();
         // userPwd = Md5Util.md5Encrypt32Lower(userPwd);
         // 在认证提交前准备 token（令牌）
-        UsernamePasswordToken token = new UsernamePasswordToken(userName,userPwd);
+        UsernamePasswordToken token = new UsernamePasswordToken(userName,userPwd,rememberMe);
         try {
             subject.login(token);
             return ResponseBo.ok();
@@ -59,7 +60,8 @@ public class CommonController {
     }
 
     @RequestMapping("/logout")
-    public void logout(){
+    public void logout(Subject subject){
+        subject.logout();
     }
 
     @RequestMapping("/error/404")

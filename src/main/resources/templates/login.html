@@ -8,12 +8,14 @@
 </head>
 <body>
 <div class="form">
-    <label for="userName">
-        <input type="text" placeholder="用户名" id="userName" name="userName" required="required"/>
-    </label>
-    <label for="userPwd">
-        <input type="password" placeholder="密码" id="userPwd" name="userPwd" required="required"/>
-    </label>
+    <label for="userName"> 用户名</label>
+    <input type="text" placeholder="用户名" id="userName" name="userName" required="required"/>
+
+    <label for="userPwd">密码</label>
+    <input type="password" placeholder="密码" id="userPwd" name="userPwd" required="required"/>
+
+    <label for="rememberMe">记住我</label>
+    <input type="checkbox" id="rememberMe" name="rememberMe"/>
     <button onclick="login()">登录</button>
 </div>
 </body>
@@ -21,14 +23,15 @@
     function login() {
         var userName = $("input[name='userName']").val();
         var userPwd = $("input[name='userPwd']").val();
+        var rememberMe = $("input[name='rememberMe']").is(':checked');
         $.ajax({
             type: "post",
             url: "/login",
-            data: {"userName": userName,"userPwd": userPwd},
+            data: {"userName": userName,"userPwd": userPwd,"rememberMe": rememberMe},
             dataType: "json",
             success: function (r) {
                 if (r.code === 0) {
-                    location.href="/index";
+                    location.href = "/index";
                 } else {
                     alert(r.msg);
                 }
