@@ -26,6 +26,12 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!--切面aop依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!--下面的freemarker引擎是用来自动生成代码用的-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

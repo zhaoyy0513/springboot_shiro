@@ -1,6 +1,6 @@
 package zhaoyy.springboot_shiro.service;
 
-import zhaoyy.springboot_shiro.entity.User;
+import zhaoyy.springboot_shiro.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author zhaoyy
  * @since 2019-10-17
  */
-public interface IUserService extends IService<User> {
+public interface IRoleService extends IService<Role> {
 
 }

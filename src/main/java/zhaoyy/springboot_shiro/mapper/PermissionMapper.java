@@ -1,6 +1,6 @@
 package zhaoyy.springboot_shiro.mapper;
 
-import zhaoyy.springboot_shiro.entity.User;
+import zhaoyy.springboot_shiro.entity.Permission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author zhaoyy
  * @since 2019-10-17
  */
-public interface UserMapper extends BaseMapper<User> {
+public interface PermissionMapper extends BaseMapper<Permission> {
 
 }

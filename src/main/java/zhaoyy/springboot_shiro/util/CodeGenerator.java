@@ -55,7 +55,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/campus?useSSL=false&useAffectedRows=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/init?useSSL=false&useAffectedRows=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
@@ -133,7 +133,12 @@ public class CodeGenerator {
 
         //如果是多个系统，则去掉下面注释
         //strategy.setTablePrefix(pc.getModuleName() + "_");
-        strategy.setTablePrefix("_");
+
+        //有前缀用这个
+        strategy.setTablePrefix("t_");
+        //如果没有前缀用下面这个
+        //strategy.setTablePrefix("_");
+
         mpg.setStrategy(strategy);
         //设置默认模板引擎
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());

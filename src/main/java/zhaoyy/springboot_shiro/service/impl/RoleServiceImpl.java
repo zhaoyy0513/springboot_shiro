@@ -1,8 +1,8 @@
 package zhaoyy.springboot_shiro.service.impl;
 
-import zhaoyy.springboot_shiro.entity.User;
-import zhaoyy.springboot_shiro.mapper.UserMapper;
-import zhaoyy.springboot_shiro.service.IUserService;
+import zhaoyy.springboot_shiro.entity.Role;
+import zhaoyy.springboot_shiro.mapper.RoleMapper;
+import zhaoyy.springboot_shiro.service.IRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-10-17
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
 }

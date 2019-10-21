@@ -2,8 +2,6 @@ package zhaoyy.springboot_shiro.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.util.Date;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -19,32 +17,22 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_user")
-public class User implements Serializable {
+@TableName("t_permission")
+public class Permission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Integer id;
 
     /**
-     * 用户名
+     * url地址
      */
-    private String username;
+    private String url;
 
     /**
-     * 用户密码
+     * url描述
      */
-    private String password;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 是否有效 1：有效  0：锁定
-     */
-    private String status;
+    private String name;
 
 
 }

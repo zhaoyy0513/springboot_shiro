@@ -5,14 +5,17 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: zhaoyy.springboot_shiro.entity
   configuration:
-    #µ±selectByMap·µ»ØµÄÊµÌåÄ³¸ö×Ö¶ÎÎª¿ÕÊ±£¬·µ»Ønull£¬Èç¹û²»ÉèÖÃÕâ¸öÔòÊµÌå×Ö¶ÎÎª¿ÕÊ±¾Í²»·µ»Ø¸Ã×Ö¶Î£¬ÕâÊÇ²»·ûºÏÂß¼­µÄ£¬ËùÒÔ¼ÓÉÏ
+    #å½“selectByMapè¿”å›çš„å®ä½“æŸä¸ªå­—æ®µä¸ºç©ºæ—¶ï¼Œè¿”å›nullï¼Œå¦‚æœä¸è®¾ç½®è¿™ä¸ªåˆ™å®ä½“å­—æ®µä¸ºç©ºæ—¶å°±ä¸è¿”å›è¯¥å­—æ®µï¼Œè¿™æ˜¯ä¸ç¬¦åˆé€»è¾‘çš„ï¼Œæ‰€ä»¥åŠ ä¸Š
     call-setters-on-nulls: true
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/campus?useSSL=false&useAffectedRows=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/init?useSSL=false&useAffectedRows=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: admin
     type: com.alibaba.druid.pool.DruidDataSource
     platform: mysql
+  aop:
+    auto: true #Add @EnableAspectJAutoProxy
+    proxy-target-class: false #Whether subclass-based(CGLIB) falseä¼šä½¿ç”¨jdkä»£ç†æ¨¡å¼ï¼Œtrueä¼šä½¿ç”¨CGLIBæ¨¡å¼

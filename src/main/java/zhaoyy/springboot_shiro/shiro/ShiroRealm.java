@@ -7,10 +7,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import zhaoyy.springboot_shiro.entity.User;
-import zhaoyy.springboot_shiro.exception.BaseWebException;
-import zhaoyy.springboot_shiro.exception.ErrorResponseEntity;
 import zhaoyy.springboot_shiro.mapper.UserMapper;
 
 import javax.annotation.Resource;
@@ -61,11 +58,11 @@ public class ShiroRealm extends AuthorizingRealm {
         }
         System.out.println("用户" + userName + "认证pwd:"+userPwd);
         // 通过用户名和数据库进行匹配
-        User user = userMapper.selectOne(new QueryWrapper<User>().eq("user_name", userName));
+        User user = userMapper.selectOne(new QueryWrapper<User>().eq("username", userName));
         if (user == null) {
             throw new UnknownAccountException("用户名不存在！");
         }
-        if (!userPwd.equals(user.getUserPwd())) {
+        if (!userPwd.equals(user.getPassword())) {
             throw new IncorrectCredentialsException("用户名或密码错误！");
         }
         return new SimpleAuthenticationInfo(user,userPwd,getName());

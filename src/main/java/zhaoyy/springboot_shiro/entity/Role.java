@@ -1,9 +1,9 @@
 package zhaoyy.springboot_shiro.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
-import java.util.Date;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -19,32 +19,23 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_user")
-public class User implements Serializable {
+@TableName("t_role")
+public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 用户名
+     * 角色名称
      */
-    private String username;
+    private String name;
 
     /**
-     * 用户密码
+     * 角色描述
      */
-    private String password;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 是否有效 1：有效  0：锁定
-     */
-    private String status;
+    private String description;
 
 
 }
