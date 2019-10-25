@@ -13,4 +13,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+    /**
+    * 通过id获取user
+    *
+    * @param id
+    * @return zhaoyy.springboot_shiro.entity.User
+    * @author zhaoyuyang
+    * @since 2019/10/23 0023 9:41
+    */
+    User getUserById(Integer id);
 }

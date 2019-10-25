@@ -1,9 +1,14 @@
 package zhaoyy.springboot_shiro.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import zhaoyy.springboot_shiro.entity.User;
+import zhaoyy.springboot_shiro.mapper.UserMapper;
+import zhaoyy.springboot_shiro.service.IUserService;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,5 +21,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    @Resource
+    IUserService userService;
+    @Resource
+    UserMapper userMapper;
 
+    @GetMapping
+    public ResponseEntity getUserById(@RequestParam(value = "id",required = false) Integer id){
+        User userById = userMapper.getUserById(3, "");
+        if(userById==null){
+            System.out.println("未查询到指定用户id");
+        }else{
+            System.out.println(userById);
+        }
+        User userByStatus = userMapper.getUserByStatus("1", "and id=2");
+        if(userByStatus==null){
+            System.out.println("未查询到指定用户status");
+        }else{
+            System.out.println(userByStatus);
+        }
+        return ResponseEntity.ok().body("");
+    }
 }

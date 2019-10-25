@@ -42,6 +42,7 @@ Realm:用户数据和Shiro数据交互的桥梁。比如需要用户身份认证
 
 @Configuration
 public class ShiroConfig {
+
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -110,8 +111,8 @@ public class ShiroConfig {
         // 设置cookie名称，对应login.html页面的<input type="checkbox" name="rememberMe"/>
         SimpleCookie cookie = new SimpleCookie();
         cookie.setName("rememberCookie");
-        // 设置cookie的过期时间，单位为秒，这里为3分钟
-        cookie.setMaxAge(180);
+        // 设置cookie的过期时间，单位为秒，这里为15分钟
+        cookie.setMaxAge(900);
         return cookie;
     }
 

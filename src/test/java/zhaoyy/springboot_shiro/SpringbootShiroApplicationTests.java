@@ -1,6 +1,5 @@
 package zhaoyy.springboot_shiro;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,14 +12,17 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootShiroApplicationTests {
-
     @Resource
     UserMapper userMapper;
     @Test
     public void contextLoads() {
-        User user = userMapper.selectOne(new QueryWrapper<User>().eq("user_name", "root"));
-        System.out.println(user.toString());
-
+        User userById = userMapper.getUserById(3, "");
+        if(userById==null){
+            System.out.println("未查询到指定用户id");
+        }
+        User userByStatus = userMapper.getUserByStatus("1", "and id=2");
+        if(userByStatus==null){
+            System.out.println("未查询到指定用户status");
+        }
     }
-
 }
