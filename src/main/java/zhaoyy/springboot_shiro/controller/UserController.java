@@ -28,17 +28,17 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity getUserById(@RequestParam(value = "id",required = false) Integer id){
-        User userById = userMapper.getUserById(3, "");
-        if(userById==null){
-            System.out.println("未查询到指定用户id");
-        }else{
-            System.out.println(userById);
-        }
-        User userByStatus = userMapper.getUserByStatus("1", "and id=2");
+//        User userById = userMapper.getUserById(3, "");
+//        if(userById==null){
+//            System.out.println("未查询到指定用户id");
+//        }else{
+//            System.out.println(userById);
+//        }
+        User userByStatus = userMapper.getUserByStatus("1", "and id="+id);
         if(userByStatus==null){
             System.out.println("未查询到指定用户status");
         }else{
-            System.out.println(userByStatus);
+            ResponseEntity.ok().body(userByStatus);
         }
         return ResponseEntity.ok().body("");
     }
