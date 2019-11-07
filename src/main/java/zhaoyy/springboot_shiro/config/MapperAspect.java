@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.HandlerMapping;
-import zhaoyy.springboot_shiro.entity.User;
 import zhaoyy.springboot_shiro.mapper.UserMapper;
 
 import javax.annotation.Resource;
@@ -39,7 +38,7 @@ public class MapperAspect {
     }
 
     @Around(value = "point()")
-    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         Object obj = SecurityUtils.getSubject().getPrincipal();
         if (obj != null) {
@@ -51,8 +50,16 @@ public class MapperAspect {
             log.info("原方法名2:"+proceedingJoinPoint.getSignature().getName());
             Object[] args = proceedingJoinPoint.getArgs();
             args[1] = "and id=2";
-            return proceedingJoinPoint.proceed(args);
+            try {
+                return proceedingJoinPoint.proceed(args);
+            } catch (Throwable throwable) {
+                throw new RuntimeException(throwable);
+            }
         }
-        return proceedingJoinPoint.proceed();
+        try {
+            return proceedingJoinPoint.proceed();
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
     }
 }
